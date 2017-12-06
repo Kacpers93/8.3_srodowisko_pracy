@@ -3,21 +3,15 @@
     "version": "1.0.0",
     "main": "index.js",
     "scripts": {
-        "test": "npm run test:html",
+        "test": "npm run test:html && npm run test:js",
         "test:html": "nu-html-checker *.html",
+        "test:js": "jshint js/*.js",
         "build": "npm run build:clean && npm run build:sass && npm run build:autoprefixer && npm run test",
         "build:sass": "sass --sourcemap=none --update sass:css",
         "build:autoprefixer": "autoprefixer-cli css/style.css",
         "build:clean": "node_modules/.bin/rimraf -f css/*.css css/*.map",
-        
         "watch": "parallelshell \"npm run watch:sassprefixer\" \"npm run watch:browser-sync\" ",
-        
-        
-        
         "watch:sassprefixer": "parallelshell \"sass --watch sass:css\" \"onchange -d 100 css/style.css -- autoprefixer-cli -o css/style.prefixed.css css/style.css\" ",
-        
-        
-        
         "watch:browser-sync": "node_modules/.bin/browser-sync start --server --files \"css/*.css\" \"*.html\" "
     },
     "author": "",
@@ -25,6 +19,7 @@
     "dependencies": {
         "autoprefixer-cli": "^1.0.0",
         "browser-sync": "^2.18.13",
+        "jshint": "^2.9.5",
         "nu-html-checker": "^0.1.0",
         "onchange": "^3.2.1",
         "parallelshell": "^3.0.2",
