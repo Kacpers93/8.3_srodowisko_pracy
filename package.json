@@ -10,8 +10,13 @@
         "build:sass": "sass --sourcemap=none --update sass:css",
         "build:autoprefixer": "autoprefixer-cli css/style.css",
         "build:clean": "node_modules/.bin/rimraf -f css/*.css css/*.map",
+        
         "watch": "parallelshell \"npm run watch:sassprefixer\" \"npm run watch:browser-sync\" ",
-        "watch:sassprefixer": "parallelshell \"sass --watch sass:css\" \"onchange -d 100 css/style.css -- autoprefixer-cli -o css/style.prefixed.css css/style.css\" ",
+        
+        
+        "watch:sassprefixer": "parallelshell \"onchange sass/style.scss -- sass --update sass:css\" \"onchange sass/style.scss -- autoprefixer-cli css/style.css\" ",
+        
+        
         "watch:browser-sync": "node_modules/.bin/browser-sync start --server --files \"css/*.css\" \"*.html\" "
     },
     "author": "",

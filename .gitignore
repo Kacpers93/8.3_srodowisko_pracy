@@ -58,7 +58,6 @@ typings/
 .env
 
 .sass-cache
-package-lock.json
 style.prefixed.css
 css/style.css.map
 .DS_Store
